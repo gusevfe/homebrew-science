@@ -9,9 +9,6 @@ class Emboss < Formula
 
   depends_on 'pkg-config' => :build
   depends_on 'libharu'    => :optional
-  depends_on 'gd'         => :optional
-  depends_on :libpng      => :recommended
-  depends_on :x11 unless build.include? 'without-x'
 
   def install
     args = %W[
@@ -21,7 +18,6 @@ class Emboss < Formula
       --enable-64
       --with-thread
     ]
-    args << '--without-x' if build.include? 'without-x'
     system './configure', *args
     system 'make install'
   end

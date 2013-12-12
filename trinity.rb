@@ -35,7 +35,9 @@ class Trinity < Formula
     # because it uses relative paths to the in-place build. So we create a
     # symlink in bin to put the wrapper in the user's path.
     mkdir_p bin
+    (share/'trinity').mkpath
     ln_s prefix/'Trinity.pl', bin/'Trinity.pl'
+    ln_s prefix/'util', share/'trinity'/'util'
 
     # Also install a small test case.
     (prefix + 'sample_data').install 'sample_data/test_Trinity_Assembly'
